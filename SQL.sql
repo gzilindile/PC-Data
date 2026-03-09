@@ -68,14 +68,35 @@
          select Sales_Person_Department, sum (cast(Cost_of_Repairs as bigint)) as cost_of_repair
          from pc_data
          group by Sales_Person_Department
+
+
+         
 -- ADVANCED QUESTIONS
 
 -- 21. Calculate profit per Shop Name.
+
+select shop_name, sum(sale_price - Cost_Price) as profit
+from pc_data
+group by Shop_Name
+
 -- 22. Calculate profit margin per sale ((Sale Price - Cost Price) / Sale Price).
+select sale_price,sum ((Sale_Price - Cost_Price) / Sale_Price) as profit_margin
+from pc_data
+group by sale_price
+
 -- 23. Determine which Continent has the highest total revenue.
+       
 -- 24. Calculate average Sale Price per RAM size.
+  select RAM,avg (cast(sale_price as decimal (18,2))) as avg_sale_price
+  from pc_data
+  group by RAM
 -- 25. Find the PC Model with the highest Sale Price.
+select top 1 pc_model, Sale_Price
+from pc_data
+order by  Sale_Price desc 
+
 -- 26. Calculate the average number of days between Purchase Date and Ship Date.
+
 -- 27. Determine which Sales Person Department generates the highest revenue.
 -- 28. Calculate total revenue per Storage Capacity.
 -- 29. Identify sales where Sale Price is lower than PC Market Price.
